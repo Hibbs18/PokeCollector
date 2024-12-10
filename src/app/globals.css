@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.header {
+  background-color: "ede7e3";
+  font-family: Arial, Helvetica, sans-serif;
+  height: 250px;
+  width: 100%;
+
+}
