@@ -8,7 +8,7 @@ export default function ProfilePage() {
     const client = new Client();
     client
         .setEndpoint("https://appwrite.untoldtitan.org/v1")
-        .setProject("675770c2003957daf87f");
+        .setProject("67813fde00065ec83edf");
 
     const [user, setUser] = useState(null);
     const [collections, setCollections] = useState(null);
@@ -30,8 +30,9 @@ export default function ProfilePage() {
 
             // Load Collections
             const db = new Databases(client);
-            var collectionData = await db.listDocuments("67577e77002cafcac9a7", "67577e8500026d9a515e", [
-                Query.select(["collectionName", "collectionid"]),
+            var collectionData = await db.listDocuments("collectionsDB",
+            "collections-collection", [
+                Query.select(["collectionName", "collectionId"]),
                 Query.equal("userId", accountData.$id)
             ]);
             console.log(collectionData);
@@ -50,13 +51,13 @@ export default function ProfilePage() {
         const db = new Databases(client);
         var collectionId = ID.unique();
         await db.createDocument(
-            "67577e77002cafcac9a7",
-            "67577e8500026d9a515e",
+            "collectionsDB",
+            "collections-collection",
             collectionId,
             {
                 userId: user.$id,
                 collectionName: collection,
-                collectionid: collectionId
+                collectionId: collectionId
             }
         )
         router.push("/collection/" + collectionId);

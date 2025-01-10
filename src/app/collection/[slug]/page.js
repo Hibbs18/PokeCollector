@@ -14,7 +14,7 @@ export default function Page() {
     const [search, setSearch] = useState("");
     const client = new Client()
         .setEndpoint("https://appwrite.untoldtitan.org/v1")
-        .setProject("675770c2003957daf87f");
+        .setProject("67813fde00065ec83edf");
 
 
     useEffect(() => {
@@ -50,7 +50,8 @@ export default function Page() {
 
     async function AddToCollection(id) {
         const db = new Databases(client);
-        await db.updateDocument("67577e77002cafcac9a7", "67577e8500026d9a515e",
+        await db.updateDocument("collectionsDB",
+            "collections-collection",
             collection.collectionid,
             {
                 pokemonCards: [
@@ -64,9 +65,10 @@ export default function Page() {
 
     async function Reload() {
         const db = new Databases(client);
-        var dbData = await db.listDocuments("67577e77002cafcac9a7", "67577e8500026d9a515e", [
-            Query.select(["collectionName", "collectionid", "pokemonCards"]),
-            Query.equal("collectionid", params.slug)
+        var dbData = await db.listDocuments("collectionsDB",
+            "collections-collection", [
+            Query.select(["collectionName", "collectionId", "pokemonCards"]),
+            Query.equal("collectionId", params.slug)
         ]);
         setCollection(dbData.documents[0]);
 

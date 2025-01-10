@@ -8,7 +8,7 @@ export default function SignUpPage() {
     const client = new Client();
     client
         .setEndpoint("https://appwrite.untoldtitan.org/v1")
-        .setProject("675770c2003957daf87f");
+        .setProject("67813fde00065ec83edf");
 
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
